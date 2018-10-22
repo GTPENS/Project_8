@@ -22,7 +22,7 @@ public class EnemyBehavior : MonoBehaviour
                     int damage = Random.Range(5, 21);
                     generateEnemy.song.Firebullet();
                     enemyHealth.value = enemyHealth.value - damage;
-                    if (enemyHealth.value <= 0)
+					if (enemyHealth.value <= 0)
                     {
                         generateEnemy.curState[ID] = GenerateEnemy.GameState.empty;
                         generateEnemy.kills += 1;
@@ -51,6 +51,16 @@ public class EnemyBehavior : MonoBehaviour
     {
         generateEnemy.userInterface.ReloadNotificationShutOFF();
     }
+	
+	void BloodShownShutOFF(){
+		generateEnemy.userInterface.blood.SetActive(false);
+	}
+	
+	void BloodShown(){
+		CancelInvoke("BloodShownShutOFF");
+		generateEnemy.userInterface.blood.SetActive(true);
+        Invoke("BloodShownShutOFF", 1);
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -97,7 +107,8 @@ public class EnemyBehavior : MonoBehaviour
             if (generateEnemy.curState[ID] != GenerateEnemy.GameState.hide)
             {
                generateEnemy.song.EnemyShoot();
-                generateEnemy.userInterface.playerSlider.value = generateEnemy.userInterface.playerSlider.value - Random.Range(5,20);
+                generateEnemy.userInterface.playerSlider.value = generateEnemy.userInterface.playerSlider.value - Random.Range(15,25);
+				BloodShown();
             }
         }
     }

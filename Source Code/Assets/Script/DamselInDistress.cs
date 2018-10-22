@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamselInDistress : MonoBehaviour {
 
     public GameObject damsel, start, end, TheDamsels;
-    public float speed = 10f;
+    public float speed = 6f;
     public bool status;
 
 	// Use this for initialization

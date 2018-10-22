@@ -16,10 +16,24 @@ public class DataList : ScriptableObject {
 
     [Header("Data Level List")]
     public LevelData[] levelData;
+
+    [Header("Background List")]
+    public Sprite[] BG;
+
+    [Header("Character Random")]
+    public CharacterRandom[] cosplayer;
+    public int DropChance;
 }
 
 [System.Serializable]
 public class LevelData
 {
     public int MaxKill;
+}
+
+[System.Serializable]
+public class CharacterRandom
+{
+    public Sprite Char;
+    public int DropRarity;
 }

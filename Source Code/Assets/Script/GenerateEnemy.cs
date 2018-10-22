@@ -90,7 +90,7 @@ public class GenerateEnemy : MonoBehaviour {
             {
                 if (curState[i] == GameState.empty)
                 {
-                    if (timer[i] >= 50)
+                    if (timer[i] >= 200)
                     {
                         GenerateTheEnemy(i);
                     }

@@ -8,11 +8,14 @@ public class UI : MonoBehaviour {
     public Button gunReload;
     public GenerateEnemy GE;
     public Slider playerSlider,enemyHealthBar, Wave;
-    public GameObject HUD, PHUD, ExitPanel;
+    public GameObject HUD, PHUD, ExitPanel, blood;
+    public Image bg;
+    public int levelID = 0;
+    float half;
 
     void Start()
     {
-        Wave.maxValue = GE.data.levelData[0].MaxKill;
+        Wave.maxValue = GE.data.levelData[levelID].MaxKill;
         Wave.value = 0;
     }
 
@@ -25,10 +28,20 @@ public class UI : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         bullet_text.text = ""+GE.bullet;
-        kill_text.text = "Kills = " + GE.kills + " Damsel Kills = "+GE.Damsel_Kills;
+        kill_text.text = "Kills = " + GE.kills + " Civillians Kills = "+GE.Damsel_Kills;
         if(GE.bullet <=0 && !gunReload.gameObject.active)
         {
             gunReload.gameObject.SetActive(true);
+        }
+        
+        if (half < 1000)
+        {
+            //half = GE.data.levelData[levelID].MaxKill / GE.kills;
+            if (GE.kills >= 30)
+            {
+                bg.sprite = GE.data.BG[1];
+                half = 1000;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))

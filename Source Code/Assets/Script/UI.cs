@@ -10,6 +10,7 @@ public class UI : MonoBehaviour {
     public Slider playerSlider,enemyHealthBar, Wave;
     public GameObject HUD, PHUD, ExitPanel, blood;
     public Image bg;
+    public Sprite RedBar;
     public int levelID = 0;
     float half;
 

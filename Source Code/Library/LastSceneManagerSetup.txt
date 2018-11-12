@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Scene/RandomMenu.unity
+  isLoaded: 1
+  isActive: 1
